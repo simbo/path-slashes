@@ -1,6 +1,6 @@
 {
   "name": "path-slashes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adding or removing of trailing and/or leading slashes in strings, test for their existence or join strings with slashes without duplicating them.",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de)",
   "license": "MIT",
