@@ -9,8 +9,29 @@
 
 > Adding or removing of trailing and/or leading slashes in strings, test for
 > their existence or join strings with slashes without duplicating them.
+> Native Typescript support included.
 
 ---
+
+## Install
+
+```sh
+# using npm
+npm install --save path-slashes
+
+# using yarn
+yarn add path-slashes
+```
+
+Or import it from a CDN:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/path-slashes/dist/path-slashes.modern.js"></script>
+```
+
+```html
+<script type="module" src="https://unpkg.com/browse/path-slashes/dist/path-slashes.modern.js"></script>
+```
 
 ## Quick Start
 
