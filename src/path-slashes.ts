@@ -65,11 +65,17 @@ export function withoutSlashes(path: string): string {
 /**
  * Join path parts and add slashes where necessary
  */
-export function slashJoin(...parts: (string | string[])[]): string {
-  let path = '';
-  for (const part of parts.flat()) {
-    path = path === '' ? path : withTrailingSlash(path);
-    path += withoutLeadingSlash(part);
-  }
-  return path;
+export function slashJoin(...strings: (string | string[])[]): string {
+  const parts: string[] = strings.flat();
+  return parts
+    .map((part, i) => {
+      if (i === 0) {
+        return withoutTrailingSlash(part);
+      } else if (i === parts.length - 1) {
+        return withoutLeadingSlash(part);
+      } else {
+        return withoutSlashes(part);
+      }
+    })
+    .join('/');
 }
