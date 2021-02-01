@@ -70,7 +70,7 @@ export function slashJoin(...strings: (string | string[])[]): string {
   return parts
     .map((part, i) => {
       if (i === 0) {
-        return withoutTrailingSlash(part);
+        return parts.length === 1 ? part : withoutTrailingSlash(part);
       } else if (i === parts.length - 1) {
         return withoutLeadingSlash(part);
       } else {

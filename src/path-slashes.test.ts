@@ -73,6 +73,9 @@ describe('withoutSlashes', () => {
 describe('slashJoin', () => {
   it('should join path parts and add slashes if necessary', () => {
     expect(slashJoin('foo/', '/bar', 'baz', '/boom')).toBe('foo/bar/baz/boom');
+    expect(slashJoin('foo/')).toBe('foo/');
+    expect(slashJoin('/foo/')).toBe('/foo/');
+    expect(slashJoin('/foo')).toBe('/foo');
     expect(slashJoin('/foo/', '/bar', 'baz', '/boom')).toBe('/foo/bar/baz/boom');
     expect(slashJoin(['foo/', '/bar', 'baz', '/boom'])).toBe('foo/bar/baz/boom');
     expect(slashJoin(['foo/', '/bar', 'baz', '/boom/'])).toBe('foo/bar/baz/boom/');
