@@ -24,16 +24,16 @@ jobs:
           node-version: '${{ steps.nvm.outputs.version }}'
 
       - name: 📦 Install
-        run: yarn install
+        run: npm ci
 
       - name: 🕵️ Lint
-        run: yarn lint
+        run: npm run lint
 
       - name: 👷‍♂️ Build
-        run: yarn build
+        run: npm run build
 
       - name: 🧪 Test
-        run: yarn test
+        run: npm run test
 
       - name: 💯 Report to Coveralls
         uses: coverallsapp/github-action@v1.1.2
