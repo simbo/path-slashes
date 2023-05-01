@@ -29,6 +29,9 @@ jobs:
       - name: 🕵️ Lint
         run: npm run lint
 
+      - name: 👮‍♂️ Check Formatting
+        run: npm run lint
+
       - name: 👷‍♂️ Build
         run: npm run build
 
