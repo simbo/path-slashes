@@ -1,27 +1,14 @@
 {
-  "compileOnSave": false,
+  "include": ["src/**/*.ts"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "declaration": true,
-    "downlevelIteration": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "lib": ["esnext", "dom"],
-    "module": "es2020",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "removeComments": true,
+    "lib": ["ESNext", "DOM"],
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "strictPropertyInitialization": true,
-    "stripInternal": true,
-    "target": "esnext"
-  },
-  "include": ["./src/path-slashes.ts"],
-  "exclude": ["dist"]
+    "target": "ES2021"
+  }
 }

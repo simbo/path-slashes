@@ -1,3 +1,5 @@
+import { describe, it } from '@jest/globals';
+
 import {
   hasLeadingSlash,
   hasTrailingSlash,
@@ -8,7 +10,7 @@ import {
   withoutTrailingSlash,
   withSlashes,
   withTrailingSlash
-} from './path-slashes';
+} from '../src/path-slashes.js';
 
 describe('hasLeadingSlash', () => {
   it('should check if given path has a leading slash', () => {
