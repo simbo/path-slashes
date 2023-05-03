@@ -3,7 +3,7 @@
  */
 export function hasLeadingSlash(path: string): boolean {
   path = `${path}`;
-  return path.substring(0, 1) === '/';
+  return path.slice(0, 1) === '/';
 }
 
 /**
@@ -11,7 +11,7 @@ export function hasLeadingSlash(path: string): boolean {
  */
 export function hasTrailingSlash(path: string): boolean {
   path = `${path}`;
-  return path.substring(path.length - 1) === '/';
+  return path.slice(-1) === '/';
 }
 
 /**
@@ -43,7 +43,7 @@ export function withSlashes(path: string): string {
  */
 export function withoutLeadingSlash(path: string): string {
   path = `${path}`;
-  return hasLeadingSlash(path) ? path.substring(1) : path;
+  return hasLeadingSlash(path) ? path.slice(1) : path;
 }
 
 /**
@@ -51,7 +51,7 @@ export function withoutLeadingSlash(path: string): string {
  */
 export function withoutTrailingSlash(path: string): string {
   path = `${path}`;
-  return hasTrailingSlash(path) ? path.substring(0, path.length - 1) : path;
+  return hasTrailingSlash(path) ? path.slice(0, -1) : path;
 }
 
 /**
