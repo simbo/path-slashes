@@ -4,66 +4,38 @@ on:
   push:
     branches:
       - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
-
     steps:
       - name: 🛎 Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
-      - name: 🛠 Setup node.js
+      - name: 🛠️ Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: ./.nvmrc
 
-      - name: 📦 Install
+      - name: 🛠️ Install Dependencies
         run: npm ci
 
-      - name: 🕵️ Lint
+      - name: 🧑‍🏫 Lint
         run: npm run lint
 
       - name: 👮‍♂️ Check Formatting
-        run: npm run lint
+        run: npm run format
 
-      - name: 👷‍♂️ Build
-        run: npm run build
-
-      - name: 👨‍🔬 Test
+      - name: 👨‍🔬 Run Tests
         run: npm run test
 
-      - name: 💯 Report to Coveralls
+      - name: 💯 Report Coverage to Coveralls
         uses: coverallsapp/github-action@v2
 
-      - name: 👀 Check for version update
-        id: version
-        uses: EndBug/version-check@v1
-        with:
-          file-url: https://unpkg.com/small-store/package.json
-          static-checking: localIsNew
-
-      - name: 📋 Get Commits since last Release
-        if: steps.version.outputs.changed == 'true'
-        uses: simbo/changes-since-last-release-action@v1
-        id: changes
-
-      - name: 🎁 Create tag and GitHub Release
-        if: steps.version.outputs.changed == 'true'
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          tag_name: ${{ steps.version.outputs.version }}
-          release_name: Release ${{ steps.version.outputs.version }}
-          body: |
-            Changes since ${{ steps.changes.outputs.last-tag }}:
-            ${{ steps.changes.outputs.log }}
-
-      - name: 🚚 Publish to npm
-        if: steps.version.outputs.changed == 'true'
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_CI_TOKEN }}
+      - name: 👷‍♂️ Build Library
+        run: npm run build
