@@ -24,7 +24,7 @@
     "node": ">=16"
   },
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/path-slashes.js",
   "files": [
     "dist/",
     "LICENSE.md",
